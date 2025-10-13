@@ -1,0 +1,21 @@
+{% extends 'movies/base.html' %}
+{% block content %}
+<h2>{{ video.MovieTitle }} ({{ video.ReleaseYear }})</h2>
+<p class="text-muted">MovieID: <code>{{ video.MovieID }}</code></p>
+<div class="row g-3">
+<div class="col-md-6">
+<ul class="list-group">
+<li class="list-group-item"><strong>Director:</strong> {{ video.DirectorName }}</li>
+<li class="list-group-item"><strong>Actor 1:</strong> {{ video.Actor1Name }}</li>
+<li class="list-group-item"><strong>Actor 2:</strong> {{ video.Actor2Name|default:'—' }}</li>
+<li class="list-group-item"><strong>Genre:</strong> {{ video.MovieGenre }}</li>
+<li class="list-group-item"><strong>Release Year:</strong> {{ video.ReleaseYear }}</li>
+</ul>
+</div>
+</div>
+<div class="mt-3">
+<a class="btn btn-secondary" href="{% url 'movies:update' video.pk %}">Edit</a>
+<a class="btn btn-danger" href="{% url 'movies:delete' video.pk %}">Delete</a>
+<a class="btn btn-link" href="{% url 'movies:list' %}">Back</a>
+</div>
+{% endblock %}
